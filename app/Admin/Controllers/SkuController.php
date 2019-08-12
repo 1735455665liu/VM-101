@@ -31,7 +31,8 @@ class SkuController extends AdminController
         $grid->column('goods_sku', __('Goods sku'));
         $grid->column('price0', __('Price0'));
         $grid->column('price', __('Price'));
-
+        $grid->column('头像', __('goods_img'))->image();
+//        $grid->column('头像', __('goods_img'))->image();
         return $grid;
     }
 
@@ -50,6 +51,7 @@ class SkuController extends AdminController
         $show->field('goods_sku', __('Goods sku'));
         $show->field('price0', __('Price0'));
         $show->field('price', __('Price'));
+        $show->field('goods_img', __('goods_img'));
 
         return $show;
     }
@@ -67,7 +69,7 @@ class SkuController extends AdminController
         $form->text('goods_sku', __('Goods sku'));
         $form->text('price0', __('Price0'));
         $form->decimal('price', __('Price'));
-
+        $form->image('goods_img', __('goods_img'));
         return $form;
     }
 }

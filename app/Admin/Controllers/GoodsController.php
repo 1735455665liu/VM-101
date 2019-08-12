@@ -7,7 +7,7 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
-
+use App\Admin\Actions\Post\Replicate;
 class GoodsController extends AdminController
 {
     /**
@@ -31,7 +31,9 @@ class GoodsController extends AdminController
         $grid->column('create_time', __('Create time'));
         $grid->column('update_time', __('Update time'));
         $grid->column('goods_name', __('Goods name'));
-
+        $grid->actions(function ($actions) {
+            $actions->add(new Replicate);
+        });
         return $grid;
     }
 

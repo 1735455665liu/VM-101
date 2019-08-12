@@ -15,7 +15,7 @@ class BatchReplicate extends BatchAction
             // ...
         }
 
-        return $this->response()->success('Success message...')->refresh();
+        return "/admin/sku";
     }
 
 }
