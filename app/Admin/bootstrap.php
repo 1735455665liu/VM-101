@@ -1,5 +1,5 @@
 <?php
-
+use Encore\Admin\Grid\Column;
 /**
  * Laravel-admin - admin builder based on Laravel.
  * @author z-song <https://github.com/z-song>
@@ -19,3 +19,6 @@
  */
 
 Encore\Admin\Form::forget(['map', 'editor']);
+Column::extend('color', function ($value, $color) {
+    return "<span style='color: $color'>$value</span>";
+});

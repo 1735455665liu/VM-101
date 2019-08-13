@@ -26,11 +26,14 @@ class GoodsController extends AdminController
     {
         $grid = new Grid(new Pgoods);
 
-        $grid->column('id', __('Id'));
         $grid->column('goods_id', __('Goods id'));
-        $grid->column('create_time', __('Create time'));
-        $grid->column('update_time', __('Update time'));
+        $grid->column('goods_sn', __('Goods sn'));
         $grid->column('goods_name', __('Goods name'));
+        $grid->column('goods_img', __('Goods img'))->image();
+        $grid->column('short_desc', __('Short desc'));
+        $grid->column('created_at', __('Created at'));
+        $grid->column('updated_at', __('Updated at'));
+        $grid->column('is_onsale', __('Is onsale'));
         $grid->actions(function ($actions) {
             $actions->add(new Replicate);
         });
@@ -47,11 +50,14 @@ class GoodsController extends AdminController
     {
         $show = new Show(Pgoods::findOrFail($id));
 
-        $show->field('id', __('Id'));
         $show->field('goods_id', __('Goods id'));
-        $show->field('create_time', __('Create time'));
-        $show->field('update_time', __('Update time'));
+        $show->field('goods_sn', __('Goods sn'));
         $show->field('goods_name', __('Goods name'));
+        $show->field('goods_img', __('Goods img'));
+        $show->field('short_desc', __('Short desc'));
+        $show->field('created_at', __('Created at'));
+        $show->field('updated_at', __('Updated at'));
+        $show->field('is_onsale', __('Is onsale'));
 
         return $show;
     }
@@ -65,10 +71,11 @@ class GoodsController extends AdminController
     {
         $form = new Form(new Pgoods);
 
-        $form->number('goods_id', __('Goods id'));
-        $form->datetime('create_time', __('Create time'))->default(date('Y-m-d H:i:s'));
-        $form->datetime('update_time', __('Update time'))->default(date('Y-m-d H:i:s'));
+        $form->text('goods_sn', __('Goods sn'));
         $form->text('goods_name', __('Goods name'));
+        $form->image('goods_img', __('Goods img'));
+        $form->text('short_desc', __('Short desc'));
+        $form->switch('is_onsale', __('Is onsale'))->default(1);
 
         return $form;
     }
